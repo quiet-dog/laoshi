@@ -1,8 +1,7 @@
 <script lang='ts' setup>
-import LayoutIndex from '../layout/index.vue' // Adjusted path if the file is in the parent directory
+import LayoutIndex from '@/layout/index.vue' // Adjusted path if the file is in the parent directory
 import Comment from '@/components/comment/Comment.vue';
 import Comment1 from '@/components/comment1/index.vue';
-import { ElRow, ElCol } from 'element-plus';
 import "element-plus/es/components/row/style/css"
 import 'element-plus/es/components/col/style/css'
 import Ziyuan from '@/assets/kecheng/img1-47a51186.webp';
@@ -15,8 +14,14 @@ import XuexiJindu from "@/assets/chengzhangguiji/img8-d9175497.webp";
 import ZhiNengXuanRen from "@/assets/zhihuiketang/img4-811f52a2.webp";
 import NumberTo from "@/components/number-to/index.vue";
 import { useIntervalFn } from '@vueuse/core';
+import KechengModal from '@/components/kecheng-modal/index.vue';
+import { useKechengModalHook } from '@/components/kecheng-modal/index';
+import { NModal, NCard } from 'naive-ui';
+import Sucai from "@/assets/sucai/img1-CoMqH3MY.png";
+import { useRouter } from 'vue-router';
 
 
+const { closeModal, openModal, show } = useKechengModalHook();
 
 const config = reactive({
     // header: ['列1', '列2', '列3'],
@@ -46,25 +51,89 @@ useIntervalFn(() => {
     number.value = Math.floor(Math.random() * 10000)
 }, 1000)
 
+const router = useRouter();
+function goStudent() {
+    router.push('/student')
+}
+
 </script>
 
 <template>
 
     <LayoutIndex>
 
-        <div class="flex flex-col h-full">
+        <div class="flex flex-col h-full" @click="goStudent">
             <div style="height: 40%;" class="mb-4">
                 <div class="flex flex-row h-full">
                     <div class="basis-1/4 w-full">
                         <div class="bg-yellow w-full h-full">
                             <Comment title="课程资源" containerHeight="100%" containerWidth="100%" :titleWidth="200"
                                 :animate="false">
-                                <div class="">
+                                <div class="grid grid-cols-3 text-red pt-8">
+                                    <div class="col-start-1 col-span-1">
+                                        <div class="flex flex-col justify-center items-center relative top-5"
+                                            @click="openModal">
+                                            <img :src="Ziyuan" width="50%">
+                                            <p class="text-sm">资源数量:
+                                                <NumberTo :number="number" /> 个
+                                            </p>
+                                            <p class="text-sm">使用人次:
+                                                <NumberTo :number="number" />次
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-start-3 col-span-1">
+                                        <div class="flex flex-col justify-center items-center  relative top-5">
 
+                                            <img :src="Ziyuan" width="50%">
+                                            <p class="text-sm">资源数量:
+                                                <NumberTo :number="number" /> 个
+                                            </p>
+                                            <p class="text-sm">使用人次:
+                                                <NumberTo :number="number" />次
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-start-2 col-span-1">
+                                        <div class="flex flex-col justify-center items-center">
+
+                                            <img :src="Ziyuan" width="50%">
+                                            <p class="text-sm">资源数量:
+                                                <NumberTo :number="number" /> 个
+                                            </p>
+                                            <p class="text-sm">使用人次:
+                                                <NumberTo :number="number" />次
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-start-1 col-span-1">
+                                        <div class="flex flex-col justify-center items-center  relative -top-5">
+
+                                            <img :src="Ziyuan" width="50%">
+                                            <p class="text-sm">资源数量:
+                                                <NumberTo :number="number" /> 个
+                                            </p>
+                                            <p class="text-sm">使用人次:
+                                                <NumberTo :number="number" />次
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-start-3 col-span-1">
+                                        <div class="flex flex-col justify-center items-center relative -top-5">
+
+                                            <img :src="Ziyuan" width="50%">
+                                            <p class="text-sm">资源数量:
+                                                <NumberTo :number="number" /> 个
+                                            </p>
+                                            <p class="text-sm">使用人次:
+                                                <NumberTo :number="number" />次
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
 
 
-                                <div class="grid grid-cols-2 gap4">
+                                <!-- <div class="grid grid-cols-2 gap4">
                                     <div class="flex flex-col justify-center items-center">
 
                                         <img :src="Ziyuan" width="40%">
@@ -102,7 +171,7 @@ useIntervalFn(() => {
                                             <NumberTo :number="number" />次
                                         </p>
                                     </div>
-                                </div>
+                                </div> -->
                             </Comment>
                         </div>
                     </div>
@@ -250,6 +319,41 @@ useIntervalFn(() => {
 
     </LayoutIndex>
 
+    <!-- 课程资源类的 -->
+    <NModal v-model:show="show">
+        <NCard style="width: 600px;" title="文物素材库">
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-row gap-4">
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-4">
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                </div>
+            </div>
+        </NCard>
+    </NModal>
 </template>
 
 <style scoped></style>

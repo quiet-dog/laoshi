@@ -1,6 +1,5 @@
 <script lang='ts' setup>
 import { FullScreenContainer as DvFullScreenContainer, Decoration5 as DvDecoration5 } from '@kjgl77/datav-vue3'
-import Bg from "@/assets/bg/background2-8867ad2e.jpeg";
 
 </script>
 
@@ -28,7 +27,7 @@ import Bg from "@/assets/bg/background2-8867ad2e.jpeg";
 .header-bg {
     margin-top: 10px;
     height: 80%;
-    background: url("@/assets/title-8b0f6c6c.png") no-repeat;
+    background: url("@/assets/未标题-3.png") no-repeat;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;

@@ -9,7 +9,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     Comment: typeof import('./src/components/comment/Comment.vue')['default']
     Comment1: typeof import('./src/components/comment1/index.vue')['default']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    KechengModal: typeof import('./src/components/kecheng-modal/index.vue')['default']
     MusicEchart: typeof import('./src/components/music-echart/index.vue')['default']
     NumberTo: typeof import('./src/components/number-to/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
