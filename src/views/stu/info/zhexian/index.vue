@@ -10,7 +10,7 @@ import {
 } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 import VChart, { THEME_KEY } from "vue-echarts";
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 use([
     TitleComponent,
@@ -47,7 +47,8 @@ const option = ref({
         left: '3%',
         right: '4%',
         bottom: '3%',
-        containLabel: true
+        containLabel: true,
+        width: '90%',
     },
     xAxis: [
         {
@@ -118,6 +119,16 @@ const option = ref({
         }
     ]
 })
+
+const echartRef = ref(null);
+function handleResize() {
+    console.log("dasdasd")
+    echartRef.value?.resize();
+}
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+
 
 </script>
 

@@ -5,6 +5,7 @@ import { reactive } from "vue";
 import LeiDa from "./leida/index.vue";
 import ZheXianEchart from "./zhexian/index.vue";
 import LeiDaSan from "./leidasan/index.vue";
+import BottomEchart from "./bottom-echart/index.vue";
 
 const config = reactive([
     {
@@ -54,8 +55,11 @@ const config = reactive([
         </div>
         <div class="h-full">
             <div class="w-full h-full flex flex-col justify-center items-center">
-                <div class="h-1/2">
+                <div class="h-1/2 w-full">
                     <LeiDaSan />
+                </div>
+                <div class="h-1/2 w-full">
+                    <BottomEchart />
                 </div>
             </div>
         </div>

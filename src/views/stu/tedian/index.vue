@@ -1,15 +1,13 @@
 <script lang='ts' setup>
-import { ElTable } from 'element-plus';
-import { useRenzhiHook } from "./index";
-import { CapsuleChart as DvCapsuleChart } from '@kjgl77/datav-vue3';
 import { NProgress } from 'naive-ui';
-import LeiDaEchart from "./leida/index.vue";
-const { tableData } = useRenzhiHook()
+import { useTeDianHook } from './index.tsx';
+import LeiDa from "./leida/index.vue";
+const { tableData } = useTeDianHook();
 </script>
 
 <template>
     <div class="w-full h-full flex flex-col pt-8 px-5">
-        <h1 class="text-2xl"> ❤️ 认知能力概况 </h1>
+        <h1 class="text-2xl"> ❤️ 学习特点概况 </h1>
         <div style="height: 250px;">
             <ElTable :data="tableData" :header-cell-style="{ 'text-align': 'center' }"
                 :cell-style="{ textAlign: 'center', }">
@@ -19,15 +17,14 @@ const { tableData } = useRenzhiHook()
                     <template #default="scope">
                         <NProgress type="line" :percentage="scope.row.paiming" indicator-placement="inside" processing>
                             <template>
-
                             </template>
                         </NProgress>
                     </template>
                 </ElTableColumn>
             </ElTable>
         </div>
-        <div class="w-full" style="height: calc(100% - 250px);">
-            <LeiDaEchart />
+        <div class="w-full h-1/2" style="height: calc(100% - 250px);">
+            <LeiDa />
         </div>
     </div>
 </template>

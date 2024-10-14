@@ -1,5 +1,12 @@
 <script lang='ts' setup>
-import { ref } from 'vue';
+import { use } from 'echarts/core'
+import { onMounted, ref } from 'vue';
+import { RadarChart } from 'echarts/charts'
+import { TitleComponent, LegendComponent, } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+import VChart, { THEME_KEY } from "vue-echarts";
+
+use([TitleComponent, LegendComponent, RadarChart, CanvasRenderer,])
 const dataBJ = [
     [55, 9, 56, 0.46, 18, 6, 1],
     [25, 11, 21, 0.65, 34, 9, 2],
@@ -106,7 +113,7 @@ const lineStyle = {
 };
 
 const option = ref({
-    backgroundColor: '#161627',
+    // backgroundColor: '#161627',
     title: {
         text: 'AQI - Radar',
         left: 'center',
@@ -201,6 +208,16 @@ const option = ref({
         }
     ]
 })
+
+const echartRef = ref(null);
+function handleResize() {
+    console.log("dasdasd")
+    echartRef.value?.resize();
+}
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+
 </script>
 
 <template>

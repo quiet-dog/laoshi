@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Comment: typeof import('./src/components/comment/Comment.vue')['default']
     Comment1: typeof import('./src/components/comment1/index.vue')['default']
+    ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     KechengModal: typeof import('./src/components/kecheng-modal/index.vue')['default']

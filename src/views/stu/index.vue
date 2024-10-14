@@ -4,6 +4,10 @@ import TableMy from "@/views/stu/table/index.vue"
 import Comment1 from '@/components/comment1/index.vue';
 import RenZhi from "./renzhi/index.vue";
 import Info from "./info/index.vue";
+import TeDian from "./tedian/index.vue";
+import JiChu from "./jichu/index.vue";
+import YuJing from "./yujing/index.vue";
+import ZhuanYe from "./zhuanye/index.vue";
 
 
 </script>
@@ -29,7 +33,9 @@ import Info from "./info/index.vue";
                         </Comment1>
                     </div>
                     <div class="basis-1/4 w-full">
-                        <Comment1 container-width="100%" container-height="100%" />
+                        <Comment1 container-width="100%" container-height="100%">
+                            <TeDian />
+                        </Comment1>
                     </div>
                 </div>
 
@@ -38,14 +44,20 @@ import Info from "./info/index.vue";
                 <div class="flex flex-row h-5/6">
                     <div class="basis-1/4 w-full">
                         <div class="bg-yellow w-full h-full">
-                            <Comment1 container-width="100%" container-height="100%" />
+                            <Comment1 container-width="100%" container-height="100%">
+                                <JiChu />
+                            </Comment1>
                         </div>
                     </div>
                     <div class="basis-1/2 w-full">
-                        <Comment1 container-width="100%" container-height="100%" />
+                        <Comment1 container-width="100%" container-height="100%">
+                            <YuJing />
+                        </Comment1>
                     </div>
                     <div class="basis-1/4 w-full">
-                        <Comment1 container-width="100%" container-height="100%" />
+                        <Comment1 container-width="100%" container-height="100%">
+                            <ZhuanYe />
+                        </Comment1>
                     </div>
                 </div>
             </div>
