@@ -16,12 +16,15 @@ import NumberTo from "@/components/number-to/index.vue";
 import { useIntervalFn } from '@vueuse/core';
 import KechengModal from '@/components/kecheng-modal/index.vue';
 import { useKechengModalHook } from '@/components/kecheng-modal/index';
-import { NModal, NCard } from 'naive-ui';
+import { NModal, NCard, NForm, NFormItem, NSelect, NDatePicker, NButton } from 'naive-ui';
 import Sucai from "@/assets/sucai/img1-CoMqH3MY.png";
 import { useRouter } from 'vue-router';
-
+import { useYuYueModalHook } from "./yuyue";
 
 const { closeModal, openModal, show } = useKechengModalHook();
+
+const { yyCloseModal, yyOpenModal, yyShow, selectOptions } = useYuYueModalHook();
+
 
 const config = reactive({
     // header: ['列1', '列2', '列3'],
@@ -62,7 +65,7 @@ function goStudent() {
 
     <LayoutIndex>
 
-        <div class="flex flex-col h-full" @click="goStudent">
+        <div class="flex flex-col h-full">
             <div style="height: 40%;" class="mb-4">
                 <div class="flex flex-row h-full">
                     <div class="basis-1/4 w-full">
@@ -292,21 +295,21 @@ function goStudent() {
                                     <div class="flex flex-row h-1/2  justify-center items-center ">
                                         <div class="flex flex-col justify-center items-center">
                                             <img :src="ZhiNengXuanRen" height="200px" width="200px" alt="" srcset="">
-                                            <h1>智能选人</h1>
+                                            <h1>智慧课堂</h1>
                                         </div>
                                         <div class="flex flex-col justify-center items-center">
                                             <img :src="ZhiNengXuanRen" height="200px" width="200px" alt="" srcset="">
                                             <h1>智能选人</h1>
                                         </div>
                                     </div>
-                                    <div class="flex flex-row h-1/2  justify-center items-center ">
+                                    <div class="flex flex-row h-1/2  justify-center items-center " @click="yyOpenModal">
                                         <div class="flex flex-col justify-center items-center">
                                             <img :src="ZhiNengXuanRen" height="200px" width="200px" alt="" srcset="">
-                                            <h1>智能选人</h1>
+                                            <h1>企业预约</h1>
                                         </div>
                                         <div class="flex flex-col justify-center items-center">
                                             <img :src="ZhiNengXuanRen" height="200px" width="200px" alt="" srcset="">
-                                            <h1>智能选人</h1>
+                                            <h1>项目预约</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -318,6 +321,8 @@ function goStudent() {
         </div>
 
     </LayoutIndex>
+
+
 
     <!-- 课程资源类的 -->
     <NModal v-model:show="show">
@@ -353,6 +358,28 @@ function goStudent() {
                 </div>
             </div>
         </NCard>
+    </NModal>
+
+    <!-- 预约类的 -->
+    <NModal v-model:show="yyShow">
+        <NCard style="width: 600px;" title="文物素材库">
+            <NForm>
+                <NFormItem label="请选择场地">
+                    <NSelect placeholder="请选择场地" :options="selectOptions" />
+                </NFormItem>
+                <NFormItem label="请选择岗位">
+                    <NSelect placeholder="请选择岗位" :options="selectOptions" />
+                </NFormItem>
+                <NFormItem label="请选择时间">
+                    <NDatePicker placeholder="请选择时间" type="datetime" clearable />
+                </NFormItem>
+
+                <div class="flex justify-end">
+                    <NButton type="primary" @click="yyCloseModal">预约</NButton>
+                </div>
+            </NForm>
+        </NCard>
+
     </NModal>
 </template>
 
