@@ -11,6 +11,9 @@ importers:
       '@dataview/datav-vue3':
         specifier: 0.0.0-test.1672506674342
         version: 0.0.0-test.1672506674342(vue@3.5.11(typescript@5.6.3))
+      '@element-plus/icons-vue':
+        specifier: ^2.3.1
+        version: 2.3.1(vue@3.5.11(typescript@5.6.3))
       '@kjgl77/datav-vue3':
         specifier: ^1.7.3
         version: 1.7.3(vue@3.5.11(typescript@5.6.3))

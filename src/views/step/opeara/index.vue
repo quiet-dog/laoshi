@@ -1,6 +1,8 @@
 <script lang='ts' setup>
 import TestBg from "@/assets/avatar/7.png"
-import { NButton } from "naive-ui";
+import { NButton, NCard, NForm, NInput, NModal, NRadioGroup, NSpace, NRadio, NFormItem } from "naive-ui";
+import { useQiandaoHook } from ".";
+const { qianDaoForm, qianDaoShow, hideQianDao, showQianDao } = useQiandaoHook();
 </script>
 
 <template>
@@ -22,9 +24,9 @@ import { NButton } from "naive-ui";
                 <img class="mb-4" :src="TestBg" width="100px" alt="" srcset="">
                 <span class="text-2xl">课件</span>
             </div>
-            <div class="mx-auto text-center">
+            <div class="mx-auto text-center" @click="showQianDao">
                 <img class="mb-4" :src="TestBg" width="100px" alt="" srcset="">
-                <span class="text-2xl">课件</span>
+                <span class="text-2xl">签到</span>
             </div>
             <div class="mx-auto text-center">
                 <img class="mb-4" :src="TestBg" width="100px" alt="" srcset="">
@@ -61,6 +63,37 @@ import { NButton } from "naive-ui";
             </div>
         </div>
     </div>
+    <NModal v-model:show="qianDaoShow">
+        <NCard style="width: 600px;">
+            <NForm :model="qianDaoForm">
+                <NFormItem label="签到标题" path="title">
+                    <NInput v-model:value="qianDaoForm.title" />
+                </NFormItem>
+                <NFormItem label="是否自动结束" path="isAuto">
+                    <NRadioGroup v-model:value="qianDaoForm.isAuto">
+                        <NSpace>
+                            <NRadio label="是" :value="true" />
+                            <NRadio label="否" :value="false" />
+                        </NSpace>
+                    </NRadioGroup>
+                    <span>开启[自动签到],该签到在当天24点自动结束</span>
+                </NFormItem>
+                <NFormItem label="签到类型">
+                    <NRadioGroup v-model:value="qianDaoForm.type">
+                        <NSpace>
+                            <NRadio label="是" :value="'扫码签到'" />
+                        </NSpace>
+                    </NRadioGroup>
+                </NFormItem>
+            </NForm>
+
+            <div class="flex flex-row justify-center gap-4">
+                <NButton type="primary" size="small">保存</NButton>
+                <NButton type="primary" size="small">开始活动</NButton>
+                <NButton type="primary" size="small">取消</NButton>
+            </div>
+        </NCard>
+    </NModal>
 </template>
 
 <style scoped></style>
