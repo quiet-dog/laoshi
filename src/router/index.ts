@@ -9,6 +9,8 @@ import KeJian from "@/views/step/kejian/index.vue";
 import QianDao from "@/views/step/qiandao/index.vue";
 import KeZhong from "@/views/step/qiandao/liebiao/index.vue";
 import KeQian from "@/views/step/qiandao/keqian/index.vue";
+import KeHou from "@/views/step/qiandao/kehou/index.vue";
+import Detail from "@/views/step/qiandao/detail/index.vue";
 
 
 const routes: Readonly<RouteRecordRaw[]> = [
@@ -23,7 +25,9 @@ const routes: Readonly<RouteRecordRaw[]> = [
             {
                 path: "qianDao", component: QianDao, children: [
                     { path: "kezhong", component: KeZhong },
-                    { path: "keqian", component: KeQian }
+                    { path: "keqian", component: KeQian },
+                    { path: "kehou", component: KeHou },
+                    { path: "detail", component: Detail }
                 ]
             }
         ]
