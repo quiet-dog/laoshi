@@ -7,6 +7,7 @@ import CreateQianDao from "./createkejian/index.vue";
 import TiWen from "./tiwen/index.vue";
 import TaoLun from "./taolun/index.vue";
 import CeYan from "./ceyan/index.vue";
+import Pk from "./pk/index.vue";
 const { qianDaoForm, qianDaoShow, hideQianDao, showQianDao, type, openModal, title, detailInfo } = useQiandaoHook();
 </script>
 
@@ -49,9 +50,9 @@ const { qianDaoForm, qianDaoShow, hideQianDao, showQianDao, type, openModal, tit
                 <img class="mb-4" :src="TestBg" width="100px" alt="" srcset="">
                 <span class="text-2xl">课件</span>
             </div>
-            <div class="mx-auto text-center">
+            <div class="mx-auto text-center" @click="openModal(7)">
                 <img class="mb-4" :src="TestBg" width="100px" alt="" srcset="">
-                <span class="text-2xl">课件</span>
+                <span class="text-2xl">小组PK</span>
             </div>
             <div class="mx-auto text-center">
                 <img class="mb-4" :src="TestBg" width="100px" alt="" srcset="">
@@ -77,11 +78,12 @@ const { qianDaoForm, qianDaoShow, hideQianDao, showQianDao, type, openModal, tit
                 </div>
 
                 <div class="grow">
-                    <KeJianInfo v-if="type == 0" />
-                    <CreateQianDao v-if="type == 2" />
-                    <TiWen v-if="type == 3" />
-                    <TaoLun v-if="type == 4" />
-                    <CeYan v-if="type == 5" />
+                    <KeJianInfo @cancel="hideQianDao" v-if="type == 0" />
+                    <CreateQianDao @cancel="hideQianDao" v-if="type == 2" />
+                    <TiWen @cancel="hideQianDao" v-if="type == 3" />
+                    <TaoLun @cancel="hideQianDao" v-if="type == 4" />
+                    <CeYan @cancel="hideQianDao" v-if="type == 5" />
+                    <Pk @cancel="hideQianDao" v-if="type == 7" />
                 </div>
             </div>
 

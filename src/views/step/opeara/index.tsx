@@ -49,6 +49,10 @@ export function useQiandaoHook() {
                 title.value = "新建测验"
                 detailInfo.value = "das大苏打大师dassds"
             }
+            case 7: {
+                title.value = "新建小组PK"
+                detailInfo.value = "das大苏打大师dassds"
+            }
         }
         type.value = t
         showQianDao()

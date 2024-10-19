@@ -26,5 +26,14 @@ export default defineConfig({
         tailwindcss,
       ]
     }
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8040",
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, "/api")
+      }
+    }
   }
 })
