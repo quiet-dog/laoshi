@@ -4,10 +4,11 @@ import LieBiao from "./liebiao/index.vue";
 import QianDaoDetail from "./detail/index.vue";
 import { useQianDaoIndexHook } from ".";
 const { changeTabs } = useQianDaoIndexHook();
+
 </script>
 
 <template>
-    <div class="h-full w-full flex flex-col">
+    <div class="h-full w-full flex flex-col px-12">
         <div class="flex-col w-full">
             <div class="flex flex-row">
                 <div class="w-full">

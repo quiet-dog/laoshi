@@ -4,7 +4,10 @@ import { useQianDaoHook } from "."
 import { NButton, NCard, NIcon, NModal, NScrollbar } from "naive-ui";
 import dayjs from "dayjs";
 import { QrCode20Filled } from "@vicons/fluent";
-const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl } = useQianDaoHook();
+import { DevicesFoldOutlined } from "@vicons/material";
+import { DocumentSigned } from "@vicons/carbon";
+import { BrandKickstarter } from "@vicons/tabler";
+const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRouter } = useQianDaoHook();
 
 </script>
 
@@ -19,7 +22,13 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl } = u
             </div>
         </div>
         <div class="grid grid-cols-12 w-full border-2 border-solid rounded-sm py-10 my-4" v-for="item in list">
-            <div class="col-span-1">图标</div>
+            <div class="col-span-1 flex flex-row justify-center items-center">
+                <NIcon size="large">
+                    <DevicesFoldOutlined style="font-size: 50px;color: cadetblue;" v-if="item.tao_lun_model != null" />
+                    <DocumentSigned style="font-size: 50px;color: blue;" v-if="item.sign_model != null" />
+                    <BrandKickstarter style="font-size: 50px;color: blue;" v-if="item.pk_model != null" />
+                </NIcon>
+            </div>
             <div class="flex flex-col col-span-9 justify-center">
 
                 <template v-if="item.sign_model != null">
@@ -87,7 +96,7 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl } = u
             </div>
             <div class="col-start-11 col-end-13 flex flex-row gap-x-6">
                 <!--  v-if="!item.is_end && item.is_start" -->
-                <div class="flex flex-col items-center text-white justify-center">
+                <div class="flex flex-col items-center text-white justify-center" v-if="item.is_start && !item.is_end">
                     <div>
                         <NIcon size="large">
                             <QrCode20Filled />
@@ -111,14 +120,13 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl } = u
                         结束
                     </NButton>
                 </div>
-                <div class="flex flex-col items-center text-white justify-center"
-                    @click="$router.push('/step/qiandao/detail')">
+                <div class="flex flex-col items-center text-white justify-center" @click="goRouter(item)">
                     <div>
                         <ElIcon size="large">
                             <VideoPlay />
                         </ElIcon>
                     </div>
-                    <NButton text size="large" @click="showQrCode(item.id)">
+                    <NButton text size="large">
                         查看
                     </NButton>
                 </div>

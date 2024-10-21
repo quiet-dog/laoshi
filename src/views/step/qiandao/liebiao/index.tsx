@@ -1,6 +1,8 @@
 import { deleteActive, editActive, getActives } from "@/api/active";
+import { useNetwork } from "@vueuse/core";
 import { useDialog, useMessage } from "naive-ui";
 import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 
 type Active = {
     id: string
@@ -45,6 +47,7 @@ export function useQianDaoHook() {
     const message = useMessage()
     const showQr = ref(false)
     const showUrl = ref("")
+    const router = useRouter()
 
     const getTableList = () => {
         getActives().then(res => {
@@ -92,6 +95,14 @@ export function useQianDaoHook() {
         showUrl.value = "http://192.168.1.141:5173" + "/#/step/qiandao/kezhong"
     }
 
+    const goRouter = (item) => {
+        if (item.pk_model != null) {
+            router.push(`/step/qiandao/detailpk/${item.id}`)
+        } else {
+            router.push(`/step/qiandao/detail/${item.id}`)
+        }
+    }
+
     onMounted(() => {
         getTableList()
     })
@@ -104,6 +115,7 @@ export function useQianDaoHook() {
         endActive,
         showQr,
         showQrCode,
-        showUrl
+        showUrl,
+        goRouter
     }
 }

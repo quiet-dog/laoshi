@@ -3,6 +3,9 @@ import { NButton, NInput, NPagination, NTabPane, NTabs } from 'naive-ui';
 import Bg from "@/assets/avatar/7.png";
 import { Charts as DvCharts } from "@kjgl77/datav-vue3"
 import { reactive } from 'vue';
+import { useDetailHook } from "."
+
+const { info } = useDetailHook();
 
 const option = reactive({
     title: {
@@ -55,7 +58,7 @@ const option = reactive({
 </script>
 
 <template>
-    <div class="w-full h-full grid grid-cols-3 gap-x-3">
+    <div class="w-full h-full grid grid-cols-3 gap-x-3" style="min-height: 800px;">
         <div class="col-span-2 flex flex-col border-2 border-white-500">
             <div style="width: 200px;">
                 <NTabs size="large">
@@ -68,10 +71,10 @@ const option = reactive({
                 <NButton class="ml-4">查询</NButton>
             </div>
             <div class="grow text-center flex flex-wrap gap-4">
-                <div style="width: 200px;" v-for="item in [1, 1, 1, 1, 1, 1]">
+                <div style="width: 200px;" v-for="item in info?.sign_model?.sign_logs">
                     <img :src="Bg" width="200px" alt="" srcset="" />
-                    <h1>测试名字</h1>
-                    <h2>学好: 12313123</h2>
+                    <h1>{{ item.employ_model.name }}</h1>
+                    <h2>学好: {{ item.employ_model.username }}</h2>
                 </div>
             </div>
             <div class="mx-auto">

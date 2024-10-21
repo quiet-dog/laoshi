@@ -3,6 +3,7 @@ import http from ".."
 type AddPk = {
     title: string
     count: number
+    paths: string
 }
 
 export function createPk(data: AddPk) {

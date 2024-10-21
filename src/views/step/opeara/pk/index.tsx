@@ -10,20 +10,27 @@ export function usePkHook() {
     const pkModel = ref({
         title: "",
         count: 0,
+        paths: []
     })
+
+    const paths = ref([])
 
     const showPk = () => {
         pkModel.value.title = dayjs().format("YYYY-MM-DD HH:mm:ss") + "的PK"
     }
 
     const submit = async (isStart: boolean) => {
-        const res = await createPk(pkModel.value).catch(err => {
+
+        const res = await createPk({
+            ...pkModel.value,
+            paths: JSON.stringify(paths.value)
+        }).catch(err => {
 
         })
         if (res && res.data.success) {
             createActive({
                 is_start: isStart,
-                pk_id: res.data.data.id
+                pk_id: res.data.data.id,
             }).then(() => {
                 message.success("创建成功")
             }).catch(() => {
@@ -41,6 +48,7 @@ export function usePkHook() {
     return {
         pkModel,
         showPk,
-        submit
+        submit,
+        paths
     }
 }
