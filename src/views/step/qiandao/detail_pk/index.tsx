@@ -1,5 +1,7 @@
 import { getActivesById } from "@/api/active";
 import { getGroupListApi } from "@/api/employ";
+import { getScoreApi, setScoreApi } from "@/api/score";
+import { useMessage } from "naive-ui";
 import { onMounted, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -11,6 +13,11 @@ export function useDetailHook() {
     const info = ref({})
 
     const show = ref(false)
+
+    const scoreList = ref([])
+
+    const message = useMessage()
+
 
     const group = reactive([
         { label: "红箭组", value: 1 },
@@ -74,10 +81,32 @@ export function useDetailHook() {
         show.value = false
     }
 
+    const getScore = () => {
+
+        getScoreApi(id).then(res => {
+            if (res && res.data.success) {
+                scoreList.value = res.data.data
+            }
+        })
+    }
+
+
+    const setScore = (groupId: number, score) => {
+        setScoreApi({
+            active_id: id,
+            group_id: groupId,
+            score: String(score)
+        }).then(res => {
+            getScore()
+            message.success("打分成功")
+        }).catch((err) => {
+            message.error("打分失败")
+        })
+    }
 
     onMounted(() => {
-        console.log("iddasdasdas")
         getDetailInfo()
+        getScore()
     })
 
     return {
@@ -90,6 +119,8 @@ export function useDetailHook() {
         cloenModal,
         colums,
         nowLabel,
-        groupList
+        groupList,
+        scoreList,
+        setScore
     }
 }

@@ -12,7 +12,8 @@ const { changeTabs } = useQianDaoIndexHook();
         <div class="flex-col w-full">
             <div class="flex flex-row">
                 <div class="w-full">
-                    <NTabs type="line" size="large" justify-content="space-evenly" @update:value="changeTabs">
+                    <NTabs type="line" size="large" justify-content="space-evenly" id="my-tabs"
+                        @update:value="changeTabs">
                         <NTabPane name="/step/qiandao/keqian" tab="课前">
                         </NTabPane>
                         <NTabPane name="/step/qiandao/kezhong" tab="课中">
@@ -41,4 +42,8 @@ const { changeTabs } = useQianDaoIndexHook();
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#my-tabs :deep(.n-tabs-tab) {
+    font-size: 30px
+}
+</style>

@@ -34,10 +34,10 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                     </div>
                 </div>
             </div>
-            <div>
-                <NForm label-placement="left">
+            <div class="mt-4">
+                <NForm label-placement="left" id="form">
                     <NFormItem label="内容">
-                        <NInput type="textarea" />
+                        <NInput style="background-color: unset" type="textarea" />
                     </NFormItem>
                     <NFormItem label="文件">
                         <NUpload id="upload" class="w-1/3 text-center" directory-dnd>
@@ -61,7 +61,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                     </NButton>
                 </div>
             </div>
-            <div class="flex flex-row bg-red-100 justify-center py-3 px-2">
+            <div class="flex flex-row justify-center py-3 px-2">
                 <div class="grow text-3xl">课前导读</div>
                 <div class="h-full pt-2">
                     <ElIcon @click="showKeQiandDao" v-show="!showKeQiandDaoDu">
@@ -78,7 +78,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                 <h1>文件: <span>dsadasd</span> </h1>
             </div>
 
-            <div class="flex flex-row bg-red-100 justify-center py-3 px-2">
+            <div class="flex flex-row justify-center py-3 px-2">
                 <div class="grow text-3xl">活动列表</div>
                 <div class="h-full pt-2">
                     按创建时间排序
@@ -99,7 +99,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                 </div>
                 <div class="flex flex-row">
                     <div>签到类型:<span>一键签到</span></div>
-                    <div class="ml-6">参与情况:<span>0/3222</span></div>
+                    <div class="ml-6">参与情况:<span>0/40</span></div>
                 </div>
             </div>
         </div>
@@ -109,5 +109,9 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
 <style scoped>
 #upload :deep(.n-upload-dragger) {
     background-color: unset;
+}
+
+#form :deep(.n-form-item-label__text) {
+    font-size: 30px
 }
 </style>

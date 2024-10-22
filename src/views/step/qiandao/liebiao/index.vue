@@ -47,7 +47,7 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRo
                     </div>
                     <div class="flex flex-row">
                         <div>签到类型:<span>{{ item.sign_model.type }}</span></div>
-                        <div class="ml-6">参与情况:<span>0/3222</span></div>
+                        <div class="ml-6">参与情况:<span>0/40</span></div>
                     </div>
                 </template>
 
@@ -68,15 +68,12 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRo
                     </div>
                     <div class="flex flex-row">
                         <div>小组数:<span>{{ item.pk_model.count }}</span></div>
-                        <div class="ml-6">参与情况:<span>0/3222</span></div>
+                        <div class="ml-6">参与情况:<span>0/40</span></div>
                     </div>
                 </template>
 
                 <template v-if="item.tao_lun_model != null">
                     <div class="text-white text-2xl font-bold">【讨论】{{ item.tao_lun_model.title }}
-                        <!-- <span>
-                            <NTag>未签到</NTag>
-                        </span> -->
                     </div>
                     <div class="mt-4 text-1xl font-medium flex flex-row">
                         <div>
@@ -88,7 +85,6 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRo
                     </div>
                     <div class="flex flex-row">
                         <div>讨论次数:<span>{{ 0 }}</span></div>
-                        <!-- <div class="ml-6">参与情况:<span>0/3222</span></div> -->
                     </div>
                 </template>
 
@@ -96,7 +92,8 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRo
             </div>
             <div class="col-start-11 col-end-13 flex flex-row gap-x-6">
                 <!--  v-if="!item.is_end && item.is_start" -->
-                <div class="flex flex-col items-center text-white justify-center" v-if="item.is_start && !item.is_end">
+                <div class="flex flex-col items-center text-white justify-center"
+                    v-if="item.sign_model != null && item.is_start && !item.is_end">
                     <div>
                         <NIcon size="large">
                             <QrCode20Filled />
