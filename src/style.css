@@ -11,17 +11,22 @@
 }
 
 html{
+  
+}
+
+html body{
     margin: 0;
     padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    overflow: hidden;
+}
+body{
     background-image: url("@/assets/bg/631.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-}
-
-html body{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
 }

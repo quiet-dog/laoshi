@@ -1,8 +1,10 @@
 import { deleteActive, editActive, getActives } from "@/api/active";
 import { useNetwork } from "@vueuse/core";
 import { useDialog, useMessage } from "naive-ui";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useRouter } from "vue-router";
+import { useTypeHook } from "../type_hook";
+
 
 type Active = {
     id: string
@@ -48,9 +50,12 @@ export function useQianDaoHook() {
     const showQr = ref(false)
     const showUrl = ref("")
     const router = useRouter()
+    const typeHook = useTypeHook()
 
     const getTableList = () => {
-        getActives().then(res => {
+        getActives({
+            type: typeHook.type
+        }).then(res => {
             console.log("res", res)
             if (res.data.success) {
                 list.value = res.data.data
@@ -104,6 +109,10 @@ export function useQianDaoHook() {
     }
 
     onMounted(() => {
+        getTableList()
+    })
+
+    watch(() => typeHook.type, () => {
         getTableList()
     })
 

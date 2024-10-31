@@ -12,6 +12,9 @@ import KeQian from "@/views/step/qiandao/keqian/index.vue";
 import KeHou from "@/views/step/qiandao/kehou/index.vue";
 import Detail from "@/views/step/qiandao/detail/index.vue";
 import DetailPk from "@/views/step/qiandao/detail_pk/index.vue";
+import Class from "@/views/class/index.vue";
+import TongJi from "@/views/tongji/index.vue";
+import Login from "@/views/login/index.vue";
 
 
 const routes: Readonly<RouteRecordRaw[]> = [
@@ -20,6 +23,9 @@ const routes: Readonly<RouteRecordRaw[]> = [
     { path: "/student", component: Student },
     { path: "/paihang", component: PaiHang },
     { path: "/info", component: Info },
+    { path: "/class", component: Class },
+    { path: "/tongji", component: TongJi },
+    { path: "/login", component: Login },
     {
         path: "/step", component: Step, children: [
             { path: "kejian", component: KeJian },

@@ -21,8 +21,32 @@ const { table } = useTableHook();
 </template>
 
 <style scoped>
+#table {
+    background-color: transparent !important
+}
+
 #table :deep(tbody>.el-table__row .cell) {
-    background-color: red;
     margin: 0 2px;
+}
+
+#table :deep(.el-table>tr) {
+    --el-bg-color: blue !important;
+}
+
+#table:deep(>div.el-table__inner-wrapper>div.el-table__body-wrapper>div>div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default>div>table>tbody) {
+    background-color: transparent !important
+}
+
+#table:deep(> div.el-table__inner-wrapper > div.el-table__header-wrapper > table > thead > tr) {
+    background-color: transparent !important
+}
+
+#table:deep(> div.el-table__inner-wrapper > div.el-table__header-wrapper > table > thead > tr>th) {
+    background-color: transparent !important
+}
+
+#table:deep(>div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr) {
+    background-color: transparent !important;
+    --el-table-row-hover-bg-color: transparent !important
 }
 </style>

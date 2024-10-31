@@ -25,7 +25,6 @@ import { FullScreenContainer as DvFullScreenContainer, Decoration5 as DvDecorati
 }
 
 .header-bg {
-    margin-top: 10px;
     height: 80%;
     background: url("@/assets/未标题-3.png") no-repeat;
     background-size: 100% 100%;

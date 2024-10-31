@@ -3,6 +3,7 @@ import { createSign } from "@/api/sign";
 import dayjs from "dayjs";
 import { useMessage } from "naive-ui";
 import { onDeactivated, onMounted, ref } from "vue";
+import { useTypeHook } from "../../qiandao/type_hook";
 
 export function useQiandaoHook() {
 
@@ -35,9 +36,11 @@ export function useQiandaoHook() {
 
         })
         if (res && res.data.success) {
+            const { type } = useTypeHook()
             createActive({
                 sign_id: res.data.data.id,
                 is_start: isStart,
+                type: type
             }).then(() => {
                 message.success("创建成功")
             }).catch(() => {

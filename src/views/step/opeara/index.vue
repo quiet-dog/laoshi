@@ -76,9 +76,9 @@ const { qianDaoForm, qianDaoShow, hideQianDao, showQianDao, type, openModal, tit
     <NModal v-model:show="qianDaoShow">
         <NCard style="width: 800px;">
             <div class="flex flex-row gap-x-4">
-                <div class="flex flex-col gap-y-4">
+                <div class="flex flex-col gap-y-4" style="max-width: 200px;">
                     <h1 class="text-2xl" style="width: 200px;"> <span class="text-sky-500">|</span> {{ title }}</h1>
-                    <div>{{ detailInfo }}</div>
+                    <div v-html="detailInfo"></div>
                 </div>
 
                 <div class="grow">

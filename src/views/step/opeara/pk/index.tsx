@@ -3,6 +3,7 @@ import { createPk } from "@/api/pk";
 import dayjs from "dayjs";
 import { useMessage } from "naive-ui";
 import { onMounted, ref } from "vue";
+import { useTypeHook } from "../../qiandao/type_hook";
 
 export function usePkHook() {
 
@@ -28,9 +29,11 @@ export function usePkHook() {
 
         })
         if (res && res.data.success) {
+            const { type } = useTypeHook()
             createActive({
                 is_start: isStart,
                 pk_id: res.data.data.id,
+                type: type
             }).then(() => {
                 message.success("创建成功")
             }).catch(() => {

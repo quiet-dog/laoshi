@@ -3,6 +3,7 @@ import { createTaoLun } from "@/api/taolun";
 import dayjs from "dayjs";
 import { useMessage } from "naive-ui";
 import { onMounted, ref } from "vue";
+import { useTypeHook } from "../../qiandao/type_hook";
 
 export function useTaoLunHook() {
     const taoLunForm = ref({
@@ -27,9 +28,11 @@ export function useTaoLunHook() {
         taoLunForm.value.path = path;
         const res = await createTaoLun(taoLunForm.value).catch((err) => { })
         if (res && res.data.success) {
+            const { type } = useTypeHook()
             createActive({
                 tao_lun_id: res.data.data.id,
-                is_start: isStart
+                is_start: isStart,
+                type: type
             }).then(res => {
                 message.success("创建成功")
             })

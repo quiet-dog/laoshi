@@ -68,7 +68,7 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRo
                     </div>
                     <div class="flex flex-row">
                         <div>小组数:<span>{{ item.pk_model.count }}</span></div>
-                        <div class="ml-6">参与情况:<span>0/40</span></div>
+                        <div class="ml-6">参与情况:<span>{{ item?.can_yu?.length }}/40</span></div>
                     </div>
                 </template>
 
@@ -84,7 +84,7 @@ const { list, deleteA, startActive, endActive, showQr, showQrCode, showUrl, goRo
                         </div>
                     </div>
                     <div class="flex flex-row">
-                        <div>讨论次数:<span>{{ 0 }}</span></div>
+                        <div>讨论次数:<span>{{ item?.tao_lun_model?.comment_model?.length }}</span></div>
                     </div>
                 </template>
 

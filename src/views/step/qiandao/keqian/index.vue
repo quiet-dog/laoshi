@@ -11,7 +11,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
 <template>
     <div class="w-full h-full">
         <div class="flex flex-col">
-            <div class="flex-row flex gap-x-4">
+            <div class="flex-row flex gap-x-4 px-2 py-6" style="background: hsla(0,0%,100%,.3);">
                 <div>
                     <img :src="Bg" width="100px" alt="" srcset="">
                 </div>
@@ -61,7 +61,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                     </NButton>
                 </div>
             </div>
-            <div class="flex flex-row justify-center py-3 px-2">
+            <div class="flex flex-row justify-center py-3 px-2" style="background: hsla(0,0%,100%,.3);">
                 <div class="grow text-3xl">课前导读</div>
                 <div class="h-full pt-2">
                     <ElIcon @click="showKeQiandDao" v-show="!showKeQiandDaoDu">
@@ -78,7 +78,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                 <h1>文件: <span>dsadasd</span> </h1>
             </div>
 
-            <div class="flex flex-row justify-center py-3 px-2">
+            <div class="flex flex-row justify-center py-3 px-2 mt-4" style="background: hsla(0,0%,100%,.3);">
                 <div class="grow text-3xl">活动列表</div>
                 <div class="h-full pt-2">
                     按创建时间排序

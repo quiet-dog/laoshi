@@ -7,14 +7,17 @@ export type AddActive = {
     pk_id?: string
     tao_lun_id?: string
     paths?: string
+    type?: string
 }
 
 export function createActive(data: AddActive) {
     return http.post("/api/v1/class/actives", data)
 }
 
-export function getActives() {
-    return http.get("/api/v1/class/actives")
+export function getActives(query) {
+    return http.get("/api/v1/class/actives", {
+        params: query
+    })
 }
 
 export function getActivesById(id) {

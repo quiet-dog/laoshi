@@ -1,13 +1,13 @@
 <script lang='ts' setup>
-import { NButton, NTree, TreeOption } from 'naive-ui';
+import { NButton, NModal, NTree, TreeOption } from 'naive-ui';
 import { useKejianHook } from "./index";
 import { h } from 'vue';
-const { treeData } = useKejianHook();
+const { treeData, show } = useKejianHook();
 
 
 function renderLabel(a: { option: TreeOption }) {
     // 是否有isEnd字段
-    if (a.option.isEnd) {
+    if (a.option.pid != "" && a.option.children == null) {
         return h('div', {
             class: ["flex", "flex-row", "text-2xl"],
             style: {
@@ -24,7 +24,8 @@ function renderLabel(a: { option: TreeOption }) {
             class: ["text-2xl"],
             quaternary: true,
             onClick: () => {
-                console.log("导入");
+                // console.log("导入");
+                show.value = true
             }
         }, "查看")]);
     }
@@ -65,6 +66,9 @@ function renderSwitcherIcon() {
                     :render-label="renderLabel" />
             </div>
         </div>
+        <NModal v-model:show="show">
+            asdasda
+        </NModal>
     </div>
 </template>
 
