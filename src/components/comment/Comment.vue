@@ -12,7 +12,7 @@ const { title = "content", animate = false, titleWidth = 400, containerWidth = "
 
 <template>
     <div demo-bg :style="{ width: containerWidth, height: containerHeight }">
-        <dv-border-box11 :title="title" :title-width="titleWidth" :animate="animate">
+        <dv-border-box11 :color="['#00ffff', '#00948f']" :title="title" :title-width="titleWidth" :animate="animate">
             <div dv-bg class="content">
                 <slot></slot>
             </div>

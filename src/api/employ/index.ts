@@ -7,3 +7,7 @@ export function getGroupListApi(emloyId) {
         }
     });
 }
+
+export function getEmployListApi() {
+    return http.get(`/api/v1/class/employs`);
+}

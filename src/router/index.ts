@@ -15,6 +15,7 @@ import DetailPk from "@/views/step/qiandao/detail_pk/index.vue";
 import Class from "@/views/class/index.vue";
 import TongJi from "@/views/tongji/index.vue";
 import Login from "@/views/login/index.vue";
+import Draw from "@/views/draw/index.vue";
 
 
 const routes: Readonly<RouteRecordRaw[]> = [
@@ -26,6 +27,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
     { path: "/class", component: Class },
     { path: "/tongji", component: TongJi },
     { path: "/login", component: Login },
+    { path:"/draw",component:Draw },
     {
         path: "/step", component: Step, children: [
             { path: "kejian", component: KeJian },

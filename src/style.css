@@ -10,9 +10,7 @@
     box-sizing: border-box;
 }
 
-html{
-  
-}
+
 
 html body{
     margin: 0;
@@ -24,7 +22,8 @@ html body{
     overflow: hidden;
 }
 body{
-    background-image: url("@/assets/bg/631.png");
+    /* background-image: url("@/assets/bg/631.png"); */
+    background:  #061e2a;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
