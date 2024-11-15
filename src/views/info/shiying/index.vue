@@ -25,4 +25,48 @@ const { table } = useNengliHook()
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#table :deep(tbody>.el-table__row .cell) {
+    color: white;
+    margin: 0 2px;
+}
+
+#table {
+    background-color: transparent !important;
+}
+
+#table :deep(tbody>.el-table__row .cell) {
+    margin: 0 2px;
+    color: white;
+}
+
+#table :deep(.el-table>tr) {
+    --el-bg-color: blue !important;
+}
+
+#table:deep(>div.el-table__inner-wrapper>div.el-table__body-wrapper>div>div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default>div>table>tbody) {
+    background-color: transparent !important;
+}
+
+#table:deep(> div.el-table__inner-wrapper > div.el-table__header-wrapper > table > thead > tr) {
+    background-color: transparent !important;
+    color: white;
+}
+
+#table:deep(> div.el-table__inner-wrapper > div.el-table__header-wrapper > table > thead > tr>th) {
+    background-color: transparent !important
+}
+
+#table:deep(>div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr) {
+    background-color: transparent !important;
+    --el-table-row-hover-bg-color: transparent !important
+}
+
+#table :deep(> div.el-table__inner-wrapper > div.el-table__header-wrapper > table > thead > tr > th) {
+    border-bottom: unset;
+}
+
+#table :deep(> div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr> td) {
+    border-bottom: unset;
+}
+</style>

@@ -10,17 +10,17 @@ import DetailTable from "./table/index.vue";
         <div class="grid grid-rows-2">
             <div class="flex flex-row">
                 <img :src="People" width="160px" height="100px" alt="" srcset="">
-                <div class="flex-1 grid grid-cols-3 ">
+                <div class="flex-1 grid grid-cols-3 text-2xl" style="color: white;">
                     <div class="flex flex-col justify-center items-center">
-                        <h1>个人信息展示</h1>
+                        <h1>综合素质得分</h1>
                         <NProgress type="circle" :percentage="80" :offset-degree="120" />
                     </div>
                     <div class="flex flex-col justify-center items-center">
-                        <h1>个人信息展示</h1>
+                        <h1>平均绩点</h1>
                         <NProgress type="circle" :percentage="80" :offset-degree="120" />
                     </div>
                     <div class="flex flex-col justify-center items-center">
-                        <h1>个人信息展示</h1>
+                        <h1>专业排名</h1>
                         <NProgress type="circle" :percentage="80" :offset-degree="120" />
                     </div>
                 </div>

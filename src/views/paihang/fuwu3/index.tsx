@@ -1,5 +1,5 @@
-import { getPai, updateOne } from "@/api/paiming";
-import { NButton, NInput, NInputNumber, useModal } from "naive-ui";
+import { getPai, getPaiThree, getPaiTwo, updateThree } from "@/api/paiming";
+import { NButton, NInput, useModal } from "naive-ui";
 import { h, onMounted, ref } from "vue";
 
 export function useFuwuHook() {
@@ -40,8 +40,8 @@ export function useFuwuHook() {
             footer: () => h(NButton, {
                 type: 'primary',
                 onClick: () => {
-                    updateOne(id, select.value).then(res => {
-                        getPai().then(res => {
+                    updateThree(id, select.value).then(res => {
+                        getPaiThree().then(res => {
                             console.log(res)
                             if (res && res.data.success) {
                                 one.value = res.data.data
@@ -54,16 +54,17 @@ export function useFuwuHook() {
         })
     }
 
-
-
     onMounted(() => {
-        getPai().then(res => {
+        getPaiThree().then(res => {
             console.log(res)
             if (res && res.data.success) {
                 one.value = res.data.data
             }
         })
     })
+
+
+
 
     return {
         table,

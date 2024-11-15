@@ -22,7 +22,7 @@ const { options } = useCanyuHook()
 </script>
 
 <template>
-    <div class="h-full w-full">
+    <div class="h-full w-full" style="color: white;">
         <h1 style="height: 50px;" class="text-2xl mt-4 ml-5">课堂活动参与度</h1>
         <div style="height: calc(100% - 100px);" class="w-full">
             <VChart class="chart" :option="options" />

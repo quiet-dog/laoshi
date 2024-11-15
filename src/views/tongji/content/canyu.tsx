@@ -5,20 +5,34 @@ export function useCanyuHook() {
         dataset: {
             source: [
                 ['score', 'amount', 'product'],
-                [89.3, 58212, 'Matcha Latte'],
-                [57.1, 78254, 'Milk Tea'],
-                [74.4, 41032, 'Cheese Cocoa'],
-                [50.1, 12755, 'Cheese Brownie'],
-                [89.7, 20145, 'Matcha Cocoa'],
-                [68.1, 79146, 'Tea'],
-                [19.6, 91852, 'Orange Juice'],
-                [10.6, 101852, 'Lemon Juice'],
-                [32.7, 20112, 'Walnut Brownie']
+                // [89.3, 58212, 'Matcha Latte'],
+                // [57.1, 78254, 'Milk Tea'],
+                [74.4, 41032, '签到'],
+                [50.1, 12755, '投票'],
+                [89.7, 20145, '问卷调查'],
+                [68.1, 79146, '提问'],
+                [19.6, 91852, '讨论'],
+                [10.6, 101852, '随堂测验'],
+                [32.7, 20112, '课件访问']
             ]
         },
         grid: { containLabel: true },
-        xAxis: { name: 'amount' },
-        yAxis: { type: 'category' },
+        xAxis: {
+            name: '人次',
+        },
+        yAxis: {
+            type: 'category',
+            // 字体大小
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    fontSize: 24,    //更改坐标轴文字大小
+                    color: '#fff'
+                }
+            },
+
+
+        },
         visualMap: {
             orient: 'horizontal',
             left: 'center',
@@ -39,7 +53,8 @@ export function useCanyuHook() {
                     x: 'amount',
                     // Map the "product" column to Y axis
                     y: 'product'
-                }
+                },
+
             }
         ]
     })

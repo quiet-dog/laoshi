@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import axios from "axios";
 import { NModalProvider, NDialogProvider, NMessageProvider, NNotificationProvider } from "naive-ui"
+
 
 </script>
 

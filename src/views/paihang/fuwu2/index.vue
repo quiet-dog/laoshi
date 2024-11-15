@@ -29,6 +29,7 @@ const { table, one, showModel } = useFuwuHook();
                 <div class="text-2xl" style="color: #f59a23;">
                     <NButton style="color: #f59a23;" @click="showModel(item?.id, item?.score)" text>
                         <span style="font-size: 30px;">{{ item?.score }}</span>
+
                     </NButton>
                 </div>
             </div>
