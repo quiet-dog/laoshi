@@ -1,4 +1,5 @@
 import { getPai, getPaiThree, getPaiTwo, updateThree } from "@/api/paiming";
+import { useIntervalFn } from "@vueuse/core";
 import { NButton, NInput, useModal } from "naive-ui";
 import { h, onMounted, ref } from "vue";
 
@@ -63,12 +64,34 @@ export function useFuwuHook() {
         })
     })
 
+    const scorll = ref();
+
+    const { pause, resume, isActive } = useIntervalFn(() => {
+        // 慢慢滚动
+        scorll.value.scrollTop += 1;
+        // 如果到底了，就回到顶部
+        if (scorll.value.scrollTop >= scorll.value.scrollHeight - scorll.value.clientHeight) {
+            scorll.value.scrollTop = 0;
+        }
+
+    }, 10)
+
+    const mouseEnter = () => {
+        pause()
+    }
+    const mouseLeave = () => {
+        resume()
+    }
+
 
 
 
     return {
         table,
         one,
-        showModel
+        showModel,
+        scorll,
+        mouseEnter,
+        mouseLeave
     }
 }

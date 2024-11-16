@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import axios from "axios";
-import { NModalProvider, NDialogProvider, NMessageProvider, NNotificationProvider } from "naive-ui"
+import { darkTheme } from 'naive-ui'
+import { NModalProvider, NDialogProvider, NMessageProvider, NNotificationProvider, NConfigProvider } from "naive-ui"
 
-
+darkTheme.common.textColorBase = '#fff'
 </script>
 
 <template>
-    <NMessageProvider>
-        <NNotificationProvider>
-            <NModalProvider>
-                <NDialogProvider>
-                    <RouterView />
-                </NDialogProvider>
-            </NModalProvider>
-        </NNotificationProvider>
-    </NMessageProvider>
+    <NConfigProvider :theme="darkTheme">
+        <NMessageProvider>
+            <NNotificationProvider>
+                <NModalProvider>
+                    <NDialogProvider>
+                        <RouterView />
+                    </NDialogProvider>
+                </NModalProvider>
+            </NNotificationProvider>
+        </NMessageProvider>
+    </NConfigProvider>
 </template>
 
 <style scoped></style>

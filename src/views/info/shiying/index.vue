@@ -5,9 +5,11 @@ const { table } = useNengliHook()
 </script>
 
 <template>
-    <div class="w-full h-1/2 flex flex-col px-4">
-        <div class="grow">1</div>
-        <div>
+    <div class="w-full h-full flex flex-col px-4 border-2 rounded-sm" style="color: white;border-color:  #2cf8f9">
+        <div class="text-2xl mx-auto">
+            <div class="text">适应能力概况</div>
+        </div>
+        <div class="grow">
             <ElTable :data="table" id="table" :header-cell-style="{ 'text-align': 'center' }"
                 :cell-style="{ textAlign: 'center', }">
                 <ElTableColumn prop="project" label="项目" align="center" />
@@ -26,6 +28,17 @@ const { table } = useNengliHook()
 </template>
 
 <style scoped>
+.text {
+    background: url(@/assets/info/normal_u46.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 400px;
+    text-align: center;
+    line-height: 50px;
+}
+
+
 #table :deep(tbody>.el-table__row .cell) {
     color: white;
     margin: 0 2px;
@@ -68,5 +81,9 @@ const { table } = useNengliHook()
 
 #table :deep(> div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr> td) {
     border-bottom: unset;
+}
+
+#table :deep(> div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr) {
+    height: 52px;
 }
 </style>

@@ -5,6 +5,7 @@ import { Charts as DvCharts } from "@kjgl77/datav-vue3"
 import { reactive, ref } from 'vue';
 import { useDetailHook } from "."
 import { watch } from 'fs';
+import { baseURL } from "@/utils/http";
 
 const { info, sign_logs, signTable, page, total, searchName, tabValue, search, option } = useDetailHook();
 
@@ -39,7 +40,7 @@ const changeTab = (val) => {
             </div>
             <div class="grow text-center flex flex-wrap gap-4 mt-6">
                 <div style="width: 200px;" v-for="item in signTable">
-                    <img :src="'http://127.0.0.1:8040/' + item.avatar" width="200px" alt="" srcset="" />
+                    <img :src="baseURL + item.avatar" width="200px" alt="" srcset="" />
                     <h1>{{ item.name }}</h1>
                     <h2>学号: {{ item.username }}</h2>
                 </div>

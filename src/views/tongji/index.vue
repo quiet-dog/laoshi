@@ -12,9 +12,9 @@ import Pingjun from './content/pingjun.vue';
 
 <template>
     <LayoutIndex>
-        <div class="flex flex-col h-full pb-12">
-            <div class="h-3/5">
-                <div class="grid grid-cols-8 h-full">
+        <div class="flex flex-col h-full pb-12 px-4">
+            <div class="h-3/7">
+                <div class="grid grid-cols-8 h-full gap-x-4">
                     <div class="col-start-1 col-end-3 grid grid-rows-2">
                         <div style="height: 300px;">
                             <Comment2 :animate="false" containerHeight="100%" containerWidth="100%" :titleWidth="100"
@@ -51,7 +51,7 @@ import Pingjun from './content/pingjun.vue';
                     </div>
                 </div>
             </div>
-            <div class="h-2/5">
+            <div class="h-4/7">
                 <div class="grid grid-cols-2 h-full w-full">
                     <div class="h-full mt-12" style="height: 300px;">
                         <Comment2 :animate="false" containerHeight="100%" containerWidth="100%" :titleWidth="100"

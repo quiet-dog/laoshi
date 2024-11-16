@@ -19,15 +19,15 @@ import Draw from "@/views/draw/index.vue";
 
 
 const routes: Readonly<RouteRecordRaw[]> = [
-    { path: "/", component: Student },
+    { path: "/", component: Index },
     { path: "/home", component: Index },
     { path: "/student", component: Student },
     { path: "/paihang", component: PaiHang },
-    { path: "/info", component: Info },
+    { path: "/info/:id", component: Info },
     { path: "/class", component: Class },
     { path: "/tongji", component: TongJi },
     { path: "/login", component: Login },
-    { path:"/draw",component:Draw },
+    { path: "/draw", component: Draw },
     {
         path: "/step", component: Step, children: [
             { path: "kejian", component: KeJian },

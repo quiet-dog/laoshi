@@ -57,4 +57,12 @@ const typeHook = useTypeHook();
 #my-tabs :deep(.n-tabs-tab) {
     font-size: 30px
 }
+
+#my-tabs:deep(> div.n-tabs-nav--line-type.n-tabs-nav--top.n-tabs-nav > div > div > div > div.n-tabs-wrapper > div> div > span.n-tabs-tab__label) {
+    color: white;
+}
+
+#my-tabs:deep(> div.n-tabs-nav--line-type.n-tabs-nav--top.n-tabs-nav > div > div > div > div.n-tabs-wrapper > div> div.n-tabs-tab--active>span) {
+    color: #18a058;
+}
 </style>

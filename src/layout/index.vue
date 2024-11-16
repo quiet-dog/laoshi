@@ -6,7 +6,7 @@ import { FullScreenContainer as DvFullScreenContainer, Decoration5 as DvDecorati
 <template>
     <div class="header">
         <div class="header-bg">
-            <span class="header-title">音乐旅行家</span>
+            <span class="header-title">机械产品数字化制造教学平台</span>
         </div>
         <div class="header-zhuang">
             <div small-bg>

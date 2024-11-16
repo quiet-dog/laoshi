@@ -1,6 +1,7 @@
 <script lang='ts' setup>
 import { NButton, NForm, NFormItem, NInput, NInputNumber, NUpload, UploadFileInfo } from 'naive-ui';
 import { usePkHook } from "."
+import { baseURL } from "@/utils/http";
 const { pkModel, submit, paths } = usePkHook();
 
 defineEmits(['cancel'])
@@ -37,8 +38,7 @@ function handleRemove(options: { file: UploadFileInfo, fileList: Array<UploadFil
             </NFormItem>
             <NFormItem
                 label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
-                <NUpload action="http://localhost:8040/api/v1/class/files" @remove="handleRemove"
-                    @finish="handleFinish">
+                <NUpload :action="baseURL + '/api/v1/class/files'" @remove="handleRemove" @finish="handleFinish">
                     <NButton>上传文件</NButton>
                 </NUpload>
             </NFormItem>

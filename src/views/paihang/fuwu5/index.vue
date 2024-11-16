@@ -18,7 +18,6 @@ const { table, one, showModel, scorll, mouseEnter, mouseLeave } = useFuwuHook();
 
         <div style="height: 800px">
             <div ref="scorll" @mouseenter="mouseEnter" @mouseleave="mouseLeave" style="overflow-y: auto;height: 100%">
-
                 <div v-for="(item, index) in one"
                     class="grid grid-cols-7 mt-5 justify-center items-center  text-white pb-2">
                     <div style="width: 30px;height: 30px;background-color: white;border-radius: 50%;"
@@ -34,12 +33,12 @@ const { table, one, showModel, scorll, mouseEnter, mouseLeave } = useFuwuHook();
                     <div class="text-2xl" style="color: #f59a23;">
                         <NButton style="color: #f59a23;" @click="showModel(item?.id, item?.score)" text>
                             <span style="font-size: 30px;">{{ item?.score }}</span>
-
                         </NButton>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- </NScrollbar> -->
     </div>

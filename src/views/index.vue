@@ -15,6 +15,7 @@ import ZhiNengXuanRen from "@/assets/zhihuiketang/img4-811f52a2.webp";
 import NumberTo from "@/components/number-to/index.vue";
 import { useIntervalFn } from '@vueuse/core';
 import KechengModal from '@/components/kecheng-modal/index.vue';
+import ShuKong from "@/assets/ke/normal_u187.png";
 import { useKechengModalHook } from '@/components/kecheng-modal/index';
 import { NModal, NCard, NForm, NFormItem, NSelect, NDatePicker, NButton } from 'naive-ui';
 import Sucai from "@/assets/sucai/img1-CoMqH3MY.png";
@@ -35,6 +36,8 @@ import ZhiHuiKeTang from "@/assets/list/normal_u203.png";
 import KeTangZhiBo from "@/assets/list/normal_u204.png";
 import QiYeYuYue from "@/assets/list/normal_u205.png";
 import XiangMuYuYue from "@/assets/list/normal_u206.png";
+import ShuZi from "@/assets/ke/normal_u206.png";
+import JiQi from "@/assets/ke/normal_u207.png";
 import BgText from "@/assets/list/normal_u161.png";
 import GuanKanShiChang from "@/assets/login/watch.png";
 import WenDa from "@/assets/login/2.png";
@@ -42,11 +45,20 @@ import TaoLun from "@/assets/login/3.png";
 import TiJiao from "@/assets/login/4.png";
 import CanYuCeShi from "@/assets/login/5.png";
 import QianDao from "@/assets/login/6.png";
+import { use } from 'echarts/core'
+import { BarChart, LineChart } from 'echarts/charts'
+import { GridComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+import VChart, { THEME_KEY } from "vue-echarts";
+
+use([GridComponent, BarChart, CanvasRenderer, LineChart])
+
 
 
 const { closeModal, openModal, show } = useKechengModalHook();
 
-const { yyCloseModal, yyOpenModal, yyShow, selectOptions } = useYuYueModalHook();
+const { yyCloseModal, yyOpenModal, yyShow, selectOptions, kechengShow, kechengShowCloseModal, kechengShowOpenModal, shiChangShow, shiChangShowCloseModal, shiChangShowOpenModal, shichangData, taoLunShow, taoLunShowCloseModal, taoLunShowOpenModal, taoLunData,
+    ciShuShow, ciShuShowCloseModal, ciShuShowOpenModal, ciShuData, zuoYeData, zuoYeShow, zuoYeShowOpenModal, zuoYeShowCloseModal, canYuData, canYuShow, canYuShowCloseModal, canYuShowOpenModal } = useYuYueModalHook();
 
 
 const config = reactive({
@@ -100,7 +112,8 @@ function goStudent() {
                                         <div class="flex flex-col justify-center items-center relative top-5"
                                             @click="openModal">
                                             <img :src="ZhuanYeJiaoXueZiyuanKu" width="40%">
-                                            <h1 class="text-2xl font-bold" style="color: #30ffaf;">专业教学资源库
+                                            <h1 class="text-2xl font-bold" style="color: #30ffaf;">
+                                                专业教学资源库
                                             </h1>
                                             <p style="color: #f59a23" class="text-sm">资源数量:
                                                 <NumberTo :number="number" /> 个
@@ -111,7 +124,8 @@ function goStudent() {
                                         </div>
                                     </div>
                                     <div style="position: absolute;right: 0px;top: 40px;width: 40%;">
-                                        <div class="flex flex-col justify-center items-center  relative top-5">
+                                        <div class="flex flex-col justify-center items-center  relative top-5"
+                                            @click="kechengShowOpenModal">
 
                                             <img :src="KechengZiyuan" width="40%">
                                             <h1 class="text-2xl font-bold" style="color: #30ffaf;">课程资源库</h1>
@@ -236,31 +250,31 @@ function goStudent() {
 
                                 <div style="color: #30ffaf "
                                     class="w-full h-full px-6 grid grid-cols-3 pt-24 text-center font-bold">
-                                    <div>
+                                    <div @click="shiChangShowOpenModal">
                                         <div class="jiance">
                                             <img class="mx-auto" :src="GuanKanShiChang" width="80px" alt="" srcset="">
                                         </div>
                                         <h1 class="text-2xl mt-2">观看视频时长</h1>
                                     </div>
-                                    <div>
+                                    <div @click="taoLunShowOpenModal">
                                         <div class="jiance">
                                             <img class="mx-auto" :src="TaoLun" width="80px" alt="" srcset="">
                                         </div>
                                         <h1 class="text-2xl mt-2">主题讨论次数</h1>
                                     </div>
-                                    <div>
+                                    <div @click="ciShuShowOpenModal">
                                         <div class="jiance">
                                             <img class="mx-auto" :src="WenDa" width="80px" alt="" srcset="">
                                         </div>
                                         <h1 class="text-2xl mt-2">回答问题次数</h1>
                                     </div>
-                                    <div>
+                                    <div @click="zuoYeShowOpenModal">
                                         <div class="jiance">
                                             <img class="mx-auto" :src="TiJiao" width="80px" alt="" srcset="">
                                         </div>
                                         <h1 class="text-2xl mt-2">提交作业次数</h1>
                                     </div>
-                                    <div>
+                                    <div @click="canYuShowOpenModal">
                                         <div class="jiance">
                                             <img class="mx-auto" :src="CanYuCeShi" width="80px" alt="" srcset="">
                                         </div>
@@ -287,11 +301,13 @@ function goStudent() {
                                     </div>
                                     <div class="basis-1/2 h-full">
                                         <div class="flex flex-row h-full justify-center items-center">
-                                            <div class="w-full flex flex-col justify-center items-center">
+                                            <div class="w-full flex flex-col justify-center items-center"
+                                                @click="$router.push('/draw')">
                                                 <img :src="XueShengHuaXiang" style="width: 200px;" alt="" srcset="">
                                                 <h1 class="text-yellow-500 text-2xl font-bold">学生画像</h1>
                                             </div>
-                                            <div class="w-full flex flex-col justify-center items-center">
+                                            <div class="w-full flex flex-col justify-center items-center"
+                                                @click="$router.push('/paihang')">
                                                 <img :src="PaiHangBang" style="width: 200px;" alt="" srcset="">
                                                 <h1 class="text-yellow-500 text-2xl font-bold">排行榜</h1>
                                             </div>
@@ -357,7 +373,8 @@ function goStudent() {
                                 :animate="false">
                                 <div class="w-full h-full pt-12">
                                     <div class="flex flex-row h-1/2 gap-x-12  justify-center items-center ">
-                                        <div class="flex flex-col justify-center items-center">
+                                        <div class="flex flex-col justify-center items-center"
+                                            @click="$router.push('/step/qiandao/kezhong')">
                                             <img :src="ZhiHuiKeTang" height="150px" width="150px" alt="" srcset="">
                                             <h1 class="text-bg text-3xl font-bold">智慧课堂</h1>
                                         </div>
@@ -445,6 +462,81 @@ function goStudent() {
             </NForm>
         </NCard>
 
+    </NModal>
+
+    <NModal v-model:show="kechengShow">
+        <NCard style="width: 800px;" title="文物素材库">
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-row gap-4">
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="ShuKong" height="400px" width="400px" alt="" srcset="">
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="ShuZi" height="400px" width="400px" alt="" srcset="">
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="JiQi" height="400px" width="400px" alt="" srcset="">
+                    </div>
+                </div>
+                <!-- <div class="flex flex-row gap-4">
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                    <div class="flex  justify-center items-center relative">
+                        <img :src="Sucai" height="200px" width="200px" alt="" srcset="">
+                        <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">人物素材1</span>
+                    </div>
+                </div> -->
+            </div>
+        </NCard>
+    </NModal>
+
+    <!-- 视频时长 -->
+    <NModal v-model:show="shiChangShow">
+        <NCard style="width: 800px;" title="视频时长统计">
+            <div style="height: 400px;">
+                <VChart :option="shichangData" />
+            </div>
+        </NCard>
+    </NModal>
+
+    <NModal v-model:show="taoLunShow">
+        <NCard style="width: 800px;" title="主题讨论次数统计">
+            <div style="height: 400px;">
+                <VChart :option="taoLunData" />
+            </div>
+        </NCard>
+    </NModal>
+
+    <NModal v-model:show="ciShuShow">
+        <NCard style="width: 800px;" title="回答问题次数">
+            <div style="height: 400px;">
+                <VChart :option="ciShuData" />
+            </div>
+        </NCard>
+    </NModal>
+
+    <!-- 视频时长 -->
+    <NModal v-model:show="zuoYeShow">
+        <NCard style="width: 800px;" title="提交作业次数">
+            <div style="height: 400px;">
+                <VChart :option="zuoYeData" />
+            </div>
+        </NCard>
+    </NModal>
+
+    <!-- 视频时长 -->
+    <NModal v-model:show="canYuShow">
+        <NCard style="width: 800px;" title="参与测试次数">
+            <div style="height: 400px;">
+                <VChart :option="canYuData" />
+            </div>
+        </NCard>
     </NModal>
 </template>
 

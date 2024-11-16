@@ -5,7 +5,7 @@ import Opeara from "./opeara/index.vue"
 
 <template>
     <LayoutIndex>
-        <div class="grid grid-cols-4 h-full">
+        <div class="grid grid-cols-4 h-full" style="color: white;">
             <div class="col-span-3">
                 <RouterView />
             </div>

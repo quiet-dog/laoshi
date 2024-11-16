@@ -3,6 +3,7 @@ import { h } from "vue";
 import { useKejianHook } from ".";
 import { NButton, NCard, NModal, NTree, TreeOption } from "naive-ui";
 const { treeData, show, fileUrl } = useKejianHook();
+import { baseURL } from "@/utils/http";
 function renderLabel(a: { option: TreeOption }) {
     // 是否有isEnd字段
     if (a.option.pid != "" && a.option.children == null) {
@@ -20,7 +21,7 @@ function renderLabel(a: { option: TreeOption }) {
             quaternary: true,
             onClick: () => {
                 // console.log("导入");
-                fileUrl.value = "http://127.0.0.1:8040/" + a.option.path;
+                fileUrl.value = baseURL + a.option.path;
                 show.value = true;
             }
         }, "查看")]);

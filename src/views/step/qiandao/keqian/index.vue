@@ -36,8 +36,8 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
             </div>
             <div class="mt-4">
                 <NForm label-placement="left" id="form">
-                    <NFormItem label="内容">
-                        <NInput style="background-color: unset" type="textarea" />
+                    <NFormItem label="内容" style="color: white">
+                        <NInput style="background-color: unset;" type="textarea" />
                     </NFormItem>
                     <NFormItem label="文件">
                         <NUpload id="upload" class="w-1/3 text-center" directory-dnd>
@@ -61,7 +61,7 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
                     </NButton>
                 </div>
             </div>
-            <div class="flex flex-row justify-center py-3 px-2" style="background: hsla(0,0%,100%,.3);">
+            <div class="flex flex-row justify-center py-3 px-2 mt-4" style="background: hsla(0,0%,100%,.3);">
                 <div class="grow text-3xl">课前导读</div>
                 <div class="h-full pt-2">
                     <ElIcon @click="showKeQiandDao" v-show="!showKeQiandDaoDu">
@@ -86,15 +86,15 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
             </div>
 
             <div class="flex flex-col col-span-9 justify-center">
-                <div class="text-white text-2xl font-bold">打回dasdas 到海鸥 <span>
-                        <NTag>为签到</NTag>
+                <div class="text-white text-2xl font-bold">活动内容签到 <span>
+                        <NTag>已签到</NTag>
                     </span></div>
                 <div class="mt-4 text-1xl font-medium flex flex-row">
                     <div>
-                        创建时间:<span>12312312312</span>
+                        创建时间:<span>2024-11-11</span>
                     </div>
                     <div class="ml-5">
-                        创建时间:<span>12312312312</span>
+                        签到时间:<span>2024-11-11</span>
                     </div>
                 </div>
                 <div class="flex flex-row">
@@ -113,5 +113,13 @@ const { showKeQiandDaoDu, showKeQiandDao, hideKeQiandDao } = useKeqianHook();
 
 #form :deep(.n-form-item-label__text) {
     font-size: 30px
+}
+
+#form :deep(>div>label>span) {
+    color: white;
+}
+
+#upload :deep(> div.n-upload-trigger > span) {
+    color: white;
 }
 </style>

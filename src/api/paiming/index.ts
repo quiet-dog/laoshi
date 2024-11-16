@@ -12,6 +12,10 @@ export function getPaiThree() {
     return http.get('/api/v1/class/pai-threes')
 }
 
+export function getPaiFive() {
+    return http.get('/api/v1/class/pai-fives')
+}
+
 
 export function getPaiFour() {
     return http.get('/api/v1/class/pai-fours')
@@ -37,6 +41,13 @@ export function updateThree(id: string, score: number) {
 
 export function updateFour(id: string, score: number) {
     return http.put('/api/v1/class/pai-fours/' + id, {
+        score
+    })
+}
+
+
+export function updateFive(id: string, score: number) {
+    return http.put('/api/v1/class/pai-fives/' + id, {
         score
     })
 }

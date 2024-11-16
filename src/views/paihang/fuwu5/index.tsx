@@ -1,7 +1,7 @@
-import { getPai, getPaiTwo, updateOne, updateTwo } from "@/api/paiming";
-import { useIntervalFn } from "@vueuse/core";
+import { getPai, getPaiFive, getPaiThree, getPaiTwo, updateFive, updateThree } from "@/api/paiming";
 import { NButton, NInput, useModal } from "naive-ui";
 import { h, onMounted, ref } from "vue";
+import { useIntervalFn } from "@vueuse/core";
 
 export function useFuwuHook() {
     const table = ref([
@@ -41,8 +41,8 @@ export function useFuwuHook() {
             footer: () => h(NButton, {
                 type: 'primary',
                 onClick: () => {
-                    updateTwo(id, select.value).then(res => {
-                        getPaiTwo().then(res => {
+                    updateFive(id, select.value).then(res => {
+                        getPaiFive().then(res => {
                             console.log(res)
                             if (res && res.data.success) {
                                 one.value = res.data.data
@@ -56,13 +56,15 @@ export function useFuwuHook() {
     }
 
     onMounted(() => {
-        getPaiTwo().then(res => {
+        getPaiFive().then(res => {
             console.log(res)
             if (res && res.data.success) {
                 one.value = res.data.data
             }
         })
     })
+
+
     const scorll = ref();
 
     const { pause, resume, isActive } = useIntervalFn(() => {
@@ -84,14 +86,6 @@ export function useFuwuHook() {
 
 
 
-    onMounted(() => {
-        getPaiTwo().then(res => {
-            console.log(res)
-            if (res && res.data.success) {
-                one.value = res.data.data
-            }
-        })
-    })
 
     return {
         table,

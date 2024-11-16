@@ -5,12 +5,13 @@ import Fuwu from "./fuwu/index.vue";
 import Fuwu2 from "./fuwu2/index.vue";
 import Fuwu3 from "./fuwu3/index.vue";
 import Fuwu4 from "./fuwu4/index.vue";
+import Fuwu5 from "./fuwu5/index.vue";
 import { ElTable } from 'element-plus';
 </script>
 
 <template>
     <LayoutIndex>
-        <div class="grid grid-cols-4 gap-4" style="height: calc(100% - 110px);">
+        <div class="grid grid-cols-5 gap-4" style="height: calc(100% - 110px);">
             <div class="w-full h-full">
                 <Comment title="项目一-140火箭架数字化制造" containerHeight="100%" containerWidth="100%" :titleWidth="300"
                     :animate="false">
@@ -27,6 +28,12 @@ import { ElTable } from 'element-plus';
                 <Comment title="项目三-PHL03式远程火箭炮" containerHeight="100%" containerWidth="100%" :titleWidth="300"
                     :animate="false">
                     <Fuwu3 />
+                </Comment>
+            </div>
+            <div class="w-full h-full">
+                <Comment title="项目四-发射车数字化制造" containerHeight="100%" containerWidth="100%" :titleWidth="300"
+                    :animate="false">
+                    <Fuwu5 />
                 </Comment>
             </div>
             <div class="w-full h-full">

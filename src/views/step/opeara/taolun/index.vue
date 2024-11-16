@@ -2,6 +2,7 @@
 import { NButton, NCheckbox, NForm, NFormItem, NInput, NUpload, UploadFileInfo } from 'naive-ui';
 import { useTaoLunHook } from "."
 const { submit, taoLunForm, paths, checkValue } = useTaoLunHook();
+import { baseURL } from "@/utils/http";
 defineEmits(["cancel"])
 
 function handleFinish({
@@ -39,8 +40,7 @@ function handleRemove(options: { file: UploadFileInfo, fileList: Array<UploadFil
             </NFormItem>
             <NFormItem
                 label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
-                <NUpload action="http://localhost:8040/api/v1/class/files" @remove="handleRemove"
-                    @finish="handleFinish">
+                <NUpload :action="baseURL + 'api/v1/class/files'" @remove="handleRemove" @finish="handleFinish">
                     <NButton>上传文件</NButton>
                 </NUpload>
             </NFormItem>

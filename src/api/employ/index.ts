@@ -11,3 +11,8 @@ export function getGroupListApi(emloyId) {
 export function getEmployListApi() {
     return http.get(`/api/v1/class/employs`);
 }
+
+
+export function getEmployInfoApi(id) {
+    return http.get(`/api/v1/class/employs/${id}`);
+}

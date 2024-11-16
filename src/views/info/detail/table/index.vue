@@ -5,7 +5,7 @@ const { oneTable } = useDetaiTableHoot();
 </script>
 
 <template>
-    <div class="flex flex-col text-center text-white">
+    <div class="flex flex-col text-center text-white text-2xl">
         <div class="grid grid-cols-10 w-full text-3xl border-b-2 border-indigo-500">
             <div class="col-span-3">项目</div>
             <div class="col-span-3">得分</div>
